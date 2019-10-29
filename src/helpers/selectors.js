@@ -1,4 +1,4 @@
-export const getAppointmentsForDay = (state, day) => {
+export default function getAppointmentsForDay(state, day) {
   const appointmentsId = state.days
     .filter(e => e.name === day)
     .map(e => e.appointments)
