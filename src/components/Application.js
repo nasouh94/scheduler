@@ -9,6 +9,41 @@ import { getAppointmentsForDay, getInterview, getInterviewersForDay } from '../h
 
 export default function Application(props) {
   
+   function bookInterview(id, interview) {
+    const appointment = {
+      ...state.appointments[id],
+      interview: { ...interview }
+  }
+    const appointments = {
+      ...state.appointments,
+      [id]: appointment
+  };
+  
+  // setState({...state, appointments});
+
+  return axios.put(`/api/appointments/${id}`, {interview})
+  .then((response) => {
+    if(response.status === 204) {
+
+      setState(prev => ({...prev, appointments}));
+    }
+  }).catch(error => {
+    console.log(error)
+  })
+
+}
+
+  function cancelInterview(id) {
+    return axios.delete(`/api/appointments/${id}`)
+      .then((response) => {
+        console.log(response)
+      }).catch(error => {
+        console.log("delete error")
+      })
+      
+  }
+
+
   const [state, setState] = useState({
     day: "Monday",
     days: [],
@@ -19,7 +54,6 @@ export default function Application(props) {
   const setDay = day => setState({ ...state, day });
 
   useEffect(() => {
-  
     Promise.all([
       Promise.resolve(axios.get("/api/days")),
       Promise.resolve(axios.get("/api/appointments")),
@@ -60,7 +94,10 @@ export default function Application(props) {
           id={appointment.id}
           time={appointment.time}
           interview={interview}
-          interviewers={interviewers} />
+          interviewers={interviewers} 
+          bookInterview={bookInterview}
+          cancelInterview={cancelInterview}
+          />
         })}
         <Appointment key="last" time="5pm" />
       </section>
