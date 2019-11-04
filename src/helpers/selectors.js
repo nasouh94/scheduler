@@ -8,8 +8,8 @@ export function getAppointmentsForDay(state, day) {
 	appointmentsId.forEach((e) => {
 		appointment.push(state.appointments[e]);
 	});
-
 	return appointment;
+
 }
 
 export function getInterviewersForDay(state, day) {

@@ -7,7 +7,11 @@ import { getAppointmentsForDay, getInterview, getInterviewersForDay } from '../h
 import useApplicationData from 'hooks/useApplicationData';
 
 export default function Application(props) {
-	const { state, setDay, bookInterview, cancelInterview, getSpotsForDay } = useApplicationData();
+	const { state, 
+		setDay, 
+		bookInterview, 
+		cancelInterview, 
+		getSpotsForDay } = useApplicationData();
 
 	return (
 		<main className="layout">

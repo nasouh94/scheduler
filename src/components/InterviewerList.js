@@ -1,14 +1,17 @@
 import React, { useState } from 'react';
 import InterviewerListItem from 'components/InterviewerListItem';
 import 'components/InterviewerList.scss';
-import classnames from 'classnames';
+import PropTypes from 'prop-types';
+
+
 
 export default function InterviewerList(props) {
-	const [ selected, changeSelected ] = useState(props.interviewer);
-	const selectInterviewer = (id) => {
-		changeSelected(id);
-		props.setInterviewer(id);
+
+	InterviewerList.propTypes = {
+		value: PropTypes.number,
+		onChange: PropTypes.func.isRequired
 	};
+
 	const interviewer = props.interviewers.map((interviewer) => {
 		return (
 			<InterviewerListItem
@@ -16,8 +19,8 @@ export default function InterviewerList(props) {
 				name={interviewer.name}
 				avatar={interviewer.avatar}
 				interviewId={interviewer.id}
-				selected={interviewer.id === props.interviewer}
-				setInterviewer={(event) => props.setInterviewer(interviewer.id)}
+				selected={interviewer.id === props.value}
+				setInterviewer={() => props.onChange(interviewer.id)}
 			/>
 		);
 	});

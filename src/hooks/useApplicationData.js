@@ -91,8 +91,6 @@ export default function useApplicationData() {
 
   function getSpotsForDay(appointments, days, day) {
     const targetDay = days.find(target => target.name === day.name);
-    console.log(targetDay);
-    console.log(day.name);
     const appointmentList = [...targetDay.appointments];
     const totalSpots = appointmentList.length;
     const appointmentsSpread = { ...appointments };
