@@ -79,7 +79,7 @@ export default function Appointment(props) {
 
 			{mode === CONFIRM && (
 				<Confirm
-					message="Are You Sure You Want To Delete?"
+					message="Are you sure you would like to delete?"
 					onDelete={() => {
 						transition(DELETING);
 						cancel(props.id);

@@ -59,7 +59,7 @@ export default function useApplicationData() {
         }
       })
       .catch(error => {
-        console.log(error);
+        throw new Error(error)
       });
   }
 
@@ -70,7 +70,7 @@ export default function useApplicationData() {
         dispatch({ type: SET_INTERVIEW, id, interview: null });
       })
       .catch(error => {
-        console.log("delete error");
+        throw new Error(error)
       });
   }
 
