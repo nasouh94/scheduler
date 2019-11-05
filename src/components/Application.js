@@ -26,6 +26,7 @@ export default function Application() {
 						setDay={setDay}
 						appointments={state.appointments}
 						getSpotsForDay={getSpotsForDay}
+						selectedDay={state.day}
 					/>
 				</nav>
 				<img className="sidebar__lhl sidebar--centered" src="images/lhl.png" alt="Lighthouse Labs" />
